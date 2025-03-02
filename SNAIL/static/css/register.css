@@ -1,0 +1,81 @@
+.register{
+    background: lightsteelblue;
+}
+
+.register-input{
+    width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.register-input-img {
+    display: flex;
+    width: 400px;
+    height: 55px;
+}
+.register-input-phonecode {
+    display: flex;
+    width: 400px;
+    height: 50px;
+}
+.input-imagecode-content {
+    width: 200px;
+
+}
+.input-phonecode-content {
+    width: 200px;
+
+}
+.input-imagecode-img {
+    width: 200px;
+    height: auto;
+}
+.input-phonecode-code{
+    width: 200px;
+    height: auto;
+    margin-top: 18px;
+}
+
+.input-mobile{
+    width: 350px;
+    height: 30px;
+}
+.input-pass{
+    width: 350px;
+    height: 30px;
+}
+.input-pass2{
+    width: 350px;
+    height: 30px;
+}
+
+.register-button{
+    width: 100px;
+    height: 45px;
+    font-size: 17px;
+}
+.register-button:hover{
+    width: 100px;
+    height: 45px;
+    font-size: 17px;
+    background-color: #002a80;
+    color: white;
+}
+
+.input-imagecode{
+    height:30px;
+     margin-top: 10px;
+    margin-left: 10px;
+}
+.input-phonecode{
+      height:30px;
+     margin-top: 10px;
+     margin-left: 10px;
+}
+.phonecode-a{
+    font-size: 17px;
+}
+
+.img-size{
+    width: 150px;
+    height: 55px;
+}

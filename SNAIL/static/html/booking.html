@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>即刻预订</title>
+    <link href="/static/css/booking.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+</head>
+<body style="background: lightsteelblue;">
+    <div class="container">
+
+        <div class="top-back">
+            <a href="/myhouse.html"><button class="top-button">房    屋    详    情</button></a>
+        </div>
+
+        <div class="house-info">
+            <div  class="house-img"><img src=""></div>
+            <div class="house-text">
+                <h1>房屋标题</h1>
+                <p>￥<span>300</span>/晚</p>
+            </div>
+        </div>
+        <div class="select-date">
+            <div class="select-date-header">入住时间</div>
+            <div class="input-daterange input-group">
+                <input type="text" class="input-sm form-control" id="start-date" />
+                <span class="input-group-addon">至</span>
+                <input type="text" class="input-sm form-control" id="end-date" />
+            </div>
+        </div>
+        <div class="submit-order">
+            <span class="order-amount">订单总额：￥<span></span></span>
+            <span class="submit-btn">提交订单</span>
+        </div>
+    </div>
+    <div class="popup_con">
+        <div class="popup">
+            <p>日期有误，请重新选择！</p>
+        </div>
+        <div class="mask"></div>
+    </div>
+    
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/static/js/snail/booking.js"></script>
+</body>
+</html>

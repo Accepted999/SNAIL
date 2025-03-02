@@ -1,0 +1,86 @@
+body {
+     background: lightsteelblue;
+}
+
+.top-back{
+    margin-left: 90%;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 16px;
+}
+
+.orders-con {
+    width: 100%;
+    margin-top: 38px;
+}
+.orders-list {
+    padding: 10px;
+}
+.orders-list>li {
+    list-style-type:none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.order-title {
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #0f0f0f;
+    padding: 10px;
+    color: #0f0f0f;
+}
+
+.order-title>h3 {
+    display: inline;
+}
+.order-content {
+    background-color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+}
+
+.order-text {
+    display: inline-block;
+    width: 63%;
+    margin-left: 10px;
+}
+.order-text>h3 {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+.order-text>ul>li {
+    color: #0f0f0f;
+}
+.order-operate{
+    float: right;
+    margin-top: -7px;
+}
+.order-accept{
+    width: 80px;
+    height: 40px;
+    margin-top: 3px;
+    margin-right: 5px;
+    font-size: 22px;
+    background-color: green;
+}
+.order-reject {
+    width: 80px;
+    height: 40px;
+    margin-top: 3px;
+    margin-right: 5px;
+    font-size: 22px;
+    background-color: red;
+}
+
+.order-img{
+    margin-top: -10px;
+    width: 80px;
+    height: 80px;
+    vertical-align: top;
+    margin-top: 50px;
+}

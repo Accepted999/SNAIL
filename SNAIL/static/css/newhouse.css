@@ -1,0 +1,74 @@
+body {
+     background: lightsteelblue;
+}
+
+.top-back{
+    margin-left: 90%;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 16px;
+}
+
+.houses-con {
+    min-height: 500px;
+    margin-top: 38px;
+}
+
+.houses-list {
+    padding: 10px;
+}
+
+.houses-list>form>li {
+    list-style-type:none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.house-title, .new-house {
+    background-color: #fff;
+    border-bottom: 1px solid #0f0f0f;
+    padding: 10px;
+    color: #0f0f0f;
+}
+.new-house {
+    border-radius: 5px;
+    text-align: center;
+}
+.new-house>a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #002a80;
+}
+.house-content {
+    background-color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+}
+.house-image-cons>img {
+    width: 100%;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+.house-facility-list>li {
+    float: left;
+    width: 50%;
+    height: 39px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    color: #0f0f0f;
+}
+.btn-commit {
+    width: 180px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    background-color: #002a80;
+    color: white;
+}
+#form-house-image {
+    display: none;
+}

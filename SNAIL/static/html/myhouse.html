@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的房源</title>
+
+    <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/static/css/myhouse.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="myhouse">
+
+        <div class="top-back" >
+            <a class="top-back-a" href="/my.html"><h3>回到我的</h3></span></a>
+        </div>
+
+        <div class="myhouses-con">
+            <ul class="myhouses-list auth-warn">
+                <li>
+                    <div class="house-title">
+                        <h3>尚未进行实名认证，无法发布房屋信息！</h3>
+                    </div>
+                    <div class="myhouse-content">
+                        <a href="/auth.html" class="btn btn-success">去实名认证</a>
+                    </div>
+                </li>
+            </ul>
+            <ul id="houses-list" class="myhouses-list">
+            </ul>
+            <script id="houses-list-tmpl" type="text/html">
+                <li>
+                    <div class="new-house">
+                        <a href="/newhouse.html">发布新房源</a>
+                    </div>
+                </li>
+                {{each houses as house}}
+                <li>
+                    <a class="myhouse-a" href="/detail.html?id={{house.house_id}}">
+                        <div class="myhouse-title">
+                            <h3>房屋ID:{{house.house_id}} —— {{house.title}}</h3>
+                        </div>
+                        <div class="myhouse-content">
+                            <img class="myhouse-img" src="{{house.img_url}}">
+                            <div class="myhouse-text">
+                                <ul>
+                                    <li>位于：{{house.area_name}}</li>
+                                    <li>价格：￥{{(house.price/100.0).toFixed(0)}}/晚</li>
+                                    <li>发布时间：{{house.ctime}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {{/each}}
+            </script>
+        </div>
+
+       <div>
+            <p align="center">蜗牛&nbsp;&nbsp;享受家的温馨</p>
+       </div>
+
+    </div>
+    
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/static/js/template.js"></script>
+    <script src="/static/js/snail/myhouse.js"></script>
+</body>
+</html>

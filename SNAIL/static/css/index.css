@@ -1,0 +1,107 @@
+body {
+     background: lightsteelblue;
+}
+
+.top-bar {
+    width: 500px;
+    height: 55px;
+    border-bottom: 1px solid #0f0f0f;
+}
+.index-logo {
+    width: 110px;
+    height: 50px;
+    margin-left: 15px;
+    float: left;
+}
+
+.index-top{
+    display: none;
+    float: right;
+    height: 50px;
+}
+
+.index-button{
+    background-color: #002a80;
+    color: white;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+}
+
+.user-info {
+    display: none;
+    color: #0f0f0f;
+    height: 55px;
+    line-height: 55px;
+    font-size: 18px;
+    float: right;
+}
+
+.swiper-container{
+    width: 500px;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  /*  bottom: 0px;*/
+}
+
+.index-img{
+    width: 300px;
+    height: 300px;
+}
+
+.slide-title {
+    position: absolute;
+    bottom: 0px;
+    height: 36px;
+    padding: 0px 10px;
+    background: linear-gradient(to top, #0f0f0f, transparent);
+    color: #fff;
+    font-size: 15px;
+}
+.search-bar {
+    width: 100%;
+    background-color: #fff;
+    padding: 16px 10px;
+}
+.filter-button {
+    display: block;
+    width: 500px;
+    height: 35px;
+    background-color: #002a80;
+    border: none;
+    color: white;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 0px 15px;
+}
+.modal-title {
+    font-size: 16px;
+}
+.modal-header, .modal-footer {
+    padding: 10px;
+}
+.modal-body {
+    padding: 0;
+}
+.area-list a {
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    margin: 10px;
+    font-size: 16px;
+}
+.area-list a:hover, .user-name:hover {
+    text-decoration: none;
+}
+.date-select {
+    font-size: 16px;
+}
+.datepicker-inline, .datepicker table {
+    width: 100% !important;
+}
+
+
+
+

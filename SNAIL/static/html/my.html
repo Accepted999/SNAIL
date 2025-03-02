@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的蜗牛</title>
+    <link href="/static/css/my.css" rel="stylesheet">
+</head>
+<body>
+    <div class="my" >
+
+        <div class="top-back" >
+            <a class="top-back-a" href="/"><h3>回到主页</h3></span></a>
+        </div>
+
+        <div class="my-function">
+            <ul class="my-list">
+                <li>
+                    <div class="my-title">
+                        <h3>个人信息</h3>
+                        <a class="my-title-a" href="/profile.html">修改</a>
+                    </div>
+                    <div class="my-content">
+                        <img class="my-img" id="user-avatar" src="">
+                        <div class="my-text">
+                            <h3>用户名：<span id="user-name"></span></h3>
+                            <h5>手机号：<span id="user-mobile"></span></h5>
+                        </div> 
+                    </div>
+                </li>
+                <li>
+                    <div class="my-title">
+                        <a href="/orders.html"><h3>我的订单</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="my-title">
+                        <a href="/auth.html"><h3>实名认证</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="my-title">
+                        <a href="/myhouse.html"><h3>我的房源</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="my-title ">
+                        <a href="/lorders.html"><h3>客户订单</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="my-title ">
+                        <a href="#" onclick="logout();" ><h3>退出</h3></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p align="center">蜗牛&nbsp;&nbsp;享受家的温馨</p>
+        </div> 
+    </div>
+    
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/static/js/snail/my.js"></script>
+</body>
+</html>

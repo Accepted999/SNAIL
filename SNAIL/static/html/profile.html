@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>个人信息</title>
+     <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/static/css/profile.css" rel="stylesheet">
+</head>
+<body>
+    <div class="profile">
+
+        <div class="top-back">
+                <a href="/my.html"><h3 class="page-title">回到我的</h3></a>
+        </div>
+
+        <div class="profile-fun">
+            <ul class="profile-list">
+                <li>
+                    <div class="profile-title">
+                        <h3>头像</h3>
+                    </div>
+                    <div class="profile-content">
+                        <img class="profile-img" id="user-avatar" src="">
+                        <div class="profile-text">
+                            <form id="form-avatar" enctype="multipart/form-data">
+                                选择头像：<input type="file" accept="image/*" name="avatar">
+                                <input type="submit" class="profile-button" value="上传">
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="profile-title">
+                        <h3>用户名</h3>
+                    </div>
+                    <div class="profile-content">
+                        <form id="form-name" action="/api/profile/name" method="post">
+                            <input type="text" name="name" id="user-name">
+                            <input type="submit" class="profile-button" value="保存">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="popup_con">
+            <div class="popup">
+                <p>保存成功！</p>
+            </div>
+            
+            <div class="mask"></div>
+        </div>
+        <div>
+             <p align="center">蜗牛&nbsp;&nbsp;享受家的温馨</p>
+        </div> 
+    </div>
+    
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.form.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/static/js/snail/profile.js"></script>
+</body>
+</html>

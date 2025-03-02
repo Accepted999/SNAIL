@@ -1,0 +1,73 @@
+body {
+     background: lightsteelblue;
+}
+
+.top-back{
+    margin-left: 90%;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 16px;
+}
+
+.myhouses-con {
+    min-height: 100%;
+    margin-top: 38px;
+}
+.myhouses-list {
+    padding: 10px;
+}
+.myhouses-list>li {
+    list-style-type:none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.myhouse-title, .new-house {
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #0f0f0f;
+    padding: 10px;
+    color: #0f0f0f;
+}
+.new-house {
+    border-radius: 5px;
+    text-align: center;
+}
+.new-house>a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #002a80;
+}
+.myhouse-content {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.myhouse-text {
+    display: inline-block;
+}
+.myhouse-text>h3 {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.myhouse-text>ul>li {
+    height: 25px;
+    line-height: 25px;
+    color: #0f0f0f;
+}
+
+.auth-warn {
+    display: none;
+}
+
+.myhouse-img{
+    width: 80px;
+    height: 80px;
+}
+
+.myhouse-a{
+    text-decoration: none;
+}
