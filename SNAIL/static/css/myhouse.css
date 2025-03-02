@@ -71,3 +71,9 @@ body {
 .myhouse-a{
     text-decoration: none;
 }
+
+.button-a{
+    background-color: #002a80;
+    font-size: 20px;
+    color: white;
+}

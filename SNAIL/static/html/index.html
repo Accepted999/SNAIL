@@ -12,7 +12,7 @@
     <link href="/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body >
     <div class="container" align="center">
 
         <div class="top-bar" align="center">
@@ -44,7 +44,7 @@
             <button class="filter-button" type="button" data-toggle="modal" data-target="#area-modal"><span id="area-btn">选择城区</span></button>
             <button class="filter-button" type="button" data-toggle="modal" data-target="#start-date-modal"><span id="start-date-btn">入住日期</span></button>
             <button class="filter-button" type="button" data-toggle="modal" data-target="#end-date-modal"><span id="end-date-btn">离开日期</span></button>
-            <button class="filter-button" onclick="goToSearchPage(this);" area-id="" start-date="" end-date="">搜索</button>
+            <button class="filter-button search-btn" onclick="goToSearchPage(this);" area-id=""  start-date="" end-date="">搜索</button>
             <div class="modal fade" id="area-modal" tabindex="-1" role="dialog" aria-labelledby="area-label">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -57,7 +57,7 @@
                             </div>
                             <script id="area-list-tmpl" type="text/html">
                             {{each areas as area}}
-                                <a href="#" area-id="{{area.aid}}">{{area.aname}}</a>
+                                <a href="#" area-id={{area.aid}}>{{area.aname}}</a>
                             {{/each}}
                             </script>
                         </div>

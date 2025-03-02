@@ -11,13 +11,17 @@ from SNAIL.utils import image_storage
 auth = auth.Auth(image_storage.access_key, image_storage.secret_key)
 
 class BaseModel(object):
-    """模型基类，为每个模型补充创建时间与更新时间"""
+    """
+    模型基类，为每个模型补充创建时间与更新时间
+    """
     create_time = db.Column(db.DateTime, default=datetime.now)  # 记录的创建时间
     update_time = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)  # 记录的更新时间
 
 
 class User(BaseModel, db.Model):
-    """用户"""
+    """
+    用户
+    """
 
     __tablename__ = "snail_user_profile"
 
@@ -31,36 +35,32 @@ class User(BaseModel, db.Model):
     houses = db.relationship("House", backref="user")  # 用户发布的房屋
     orders = db.relationship("Order", backref="user")  # 用户下的订单
 
-    # 加上property装饰器后，会把函数变为属性，属性名即为函数名
     @property
     def password(self):
-        """读取属性的函数行为"""
-        # print(user.password)  # 读取属性时被调用
-        # 函数的返回值会作为属性值
-        # return "xxxx"
+        """
+        读取属性的函数行为
+        函数的返回值会作为属性值
+        """
         raise AttributeError("这个属性只能设置，不能读取")
 
     # 使用这个装饰器, 对应设置属性操作
     @password.setter
     def password(self, passwd):
         """
-        设置属性  user.passord = "xxxxx"   设置password属性时被调用，设置密码加密
-        :param passwd: 设置属性时的数据 value就是"xxxxx", 原始的明文密码
-        :return:
-        对密码进行加密
+        将密码hash加密
         """
         self.password_hash = generate_password_hash(passwd)
 
     def check_password(self, passwd):
         """
         检验密码的正确性
-        :param passwd:  用户登录时填写的原始密码
-        :return: 如果正确，返回True， 否则返回False
         """
         return check_password_hash(self.password_hash, passwd)
 
     def to_dict(self):
-        """将对象转换为字典数据"""
+        """
+        将对象转换为字典数据
+        """
         user_dict = {
             "user_id": self.id,
             "name": self.name,
@@ -71,7 +71,9 @@ class User(BaseModel, db.Model):
         return user_dict
 
     def auth_to_dict(self):
-        """将实名信息转换为字典数据"""
+        """
+        将实名信息转换为字典数据
+        """
         auth_dict = {
             "user_id": self.id,
             "real_name": self.real_name,
@@ -81,7 +83,9 @@ class User(BaseModel, db.Model):
 
 
 class Area(BaseModel, db.Model):
-    """城区"""
+    """
+    城区
+    """
 
     __tablename__ = "snail_area_info"
 
@@ -90,7 +94,9 @@ class Area(BaseModel, db.Model):
     houses = db.relationship("House", backref="area")  # 区域的房屋
 
     def to_dict(self):
-        """将对象转换为字典"""
+        """
+        将对象转换为字典
+        """
         area_dict = {
             "aid": self.id,
             "aname": self.name
@@ -107,7 +113,9 @@ house_facility = db.Table(
 
 
 class House(BaseModel, db.Model):
-    """房屋信息"""
+    """
+    房屋信息
+    """
 
     __tablename__ = "snail_house_info"
 
@@ -132,7 +140,9 @@ class House(BaseModel, db.Model):
     orders = db.relationship("Order", backref="house")  # 房屋的订单
 
     def to_basic_dict(self):
-        """将基本信息转换为字典数据"""
+        """
+        将基本信息转换为字典数据
+        """
         house_dict = {
             "house_id": self.id,
             "title": self.title,
@@ -148,7 +158,9 @@ class House(BaseModel, db.Model):
         return house_dict
 
     def to_full_dict(self):
-        """将详细信息转换为字典数据"""
+        """
+        将详细信息转换为字典数据
+        """
         house_dict = {
             "hid": self.id,
             "user_id": self.user_id,
@@ -195,7 +207,9 @@ class House(BaseModel, db.Model):
 
 
 class Facility(BaseModel, db.Model):
-    """设施信息"""
+    """
+    设施信息
+    """
 
     __tablename__ = "snail_facility_info"
 
@@ -204,7 +218,9 @@ class Facility(BaseModel, db.Model):
 
 
 class HouseImage(BaseModel, db.Model):
-    """房屋图片"""
+    """
+    房屋图片
+    """
 
     __tablename__ = "snail_house_image"
 
@@ -214,11 +230,13 @@ class HouseImage(BaseModel, db.Model):
 
 
 class Order(BaseModel, db.Model):
-    """订单"""
+    """
+    订单
+    """
 
     __tablename__ = "snail_order_info"
 
-    id = db.Column(db.Integer, primary_key=True)  # 订单编号
+    id = db.Column(db.String(32), primary_key=True)  # 订单编号
     user_id = db.Column(db.Integer, db.ForeignKey("snail_user_profile.id"), nullable=False)  # 下订单的用户编号
     house_id = db.Column(db.Integer, db.ForeignKey("snail_house_info.id"), nullable=False)  # 预订的房间编号
     begin_date = db.Column(db.DateTime, nullable=False)  # 预订的起始时间
@@ -227,8 +245,8 @@ class Order(BaseModel, db.Model):
     house_price = db.Column(db.Integer, nullable=False)  # 房屋的单价
     amount = db.Column(db.Integer, nullable=False)  # 订单的总金额
     status = db.Column(  # 订单的状态
-        db.Enum(  # 枚举     # django choice
-            "WAIT_ACCEPT",  # 待接单,
+        db.Enum(  # 枚举
+            "WAIT_ACCEPT",  # 待接单
             "WAIT_PAYMENT",  # 待支付
             "PAID",  # 已支付
             "WAIT_COMMENT",  # 待评价
@@ -241,7 +259,9 @@ class Order(BaseModel, db.Model):
     trade_no = db.Column(db.String(80))  # 交易的流水号 支付宝的
 
     def to_dict(self):
-        """将订单信息转换为字典数据"""
+        """
+        将订单信息转换为字典数据
+        """
         order_dict = {
             "order_id": self.id,
             "title": self.house.title,

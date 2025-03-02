@@ -35,7 +35,7 @@ def order_pay(order_id):
 
     # 创建支付宝sdk的工具对象
     alipay_client = AliPay(
-        appid="2021000117696575",
+        appid="2021003127616963",
         app_notify_url=None,  # 默认回调url
         app_private_key_string=app_private_key_string,  # 私钥
         alipay_public_key_string=alipay_public_key_string,
@@ -47,8 +47,8 @@ def order_pay(order_id):
     order_string = alipay_client.api_alipay_trade_wap_pay(
         out_trade_no=order.id,  # 订单编号
         total_amount=str(order.amount / 100.0),  # 总金额
-        subject=u"爱家租房 %s" % order.id,  # 订单标题
-        return_url="http://127.0.0.1:5000/payComplete.html",  # 返回的连接地址
+        subject=u"蜗牛 %s" % order.id,  # 订单标题
+        return_url="http://192.168.1.13:5000/payComplete.html",  # 返回的连接地址
         notify_url=None  # 可选, 不填则使用默认notify url
     )
 

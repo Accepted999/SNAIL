@@ -45,6 +45,7 @@ function updateHouseData(action) {
         sk:sortKey,
         p:next_page
     };
+    console.log(params)
     $.get("/api/v1.0/houses", params, function(resp){
         house_data_querying = false;
         if ("0" == resp.errno) {

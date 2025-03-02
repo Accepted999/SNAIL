@@ -8,9 +8,12 @@ import logging
 from logging.handlers import RotatingFileHandler
 from SNAIL.utils.commons import ReConverter
 
-#创建了各类对象，暂时不和flask对象绑定到一起
-#在工厂模式时，通过init_app()将其绑定
+#创建了各类对象，暂时不和flask对象绑定到一起，在工厂模式时，通过init_app()将其绑定
+
 db = SQLAlchemy()    #flask扩展
+#SQLAlchemy是一个关系型数据库框架
+#使用类来创建表
+
 redis_store = None
 csrf = CSRFProtect()
 
@@ -25,7 +28,7 @@ file_log_handler.setFormatter(formatter)
 logging.getLogger().addHandler(file_log_handler)
 
 
-# 工厂模式  创建flask对象
+# 创建flask对象的函数
 def creat_app(config_name):
 
     app = Flask(__name__)

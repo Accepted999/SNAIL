@@ -46,6 +46,7 @@ function setEndDate() {
 function goToSearchPage(th) {
     var url = "/search.html?";
     url += ("aid=" + $(th).attr("area-id"));
+    console.log($(th).attr("area-id"))
     url += "&";
     var areaName = $(th).attr("area-name");
     if (undefined == areaName) areaName="";
@@ -54,6 +55,7 @@ function goToSearchPage(th) {
     url += ("sd=" + $(th).attr("start-date"));
     url += "&";
     url += ("ed=" + $(th).attr("end-date"));
+    console.log(url)
     location.href = url;
 }
 
@@ -86,10 +88,12 @@ $(document).ready(function(){
 
     // 获取城区信息
     $.get("/api/v1.0/areas", function(resp){
+        // console.log(resp)
         if ("0" == resp.errno) {
             $(".area-list").html(template("area-list-tmpl", {areas:resp.data}));
 
             $(".area-list a").click(function(e){
+                console.log('object')
                 $("#area-btn").html($(this).html());
                 $(".search-btn").attr("area-id", $(this).attr("area-id"));
                 $(".search-btn").attr("area-name", $(this).html());

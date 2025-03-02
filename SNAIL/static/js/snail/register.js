@@ -33,7 +33,7 @@ function sendSMSCode() {
     // 点击发送短信验证码后被执行的函数
     $(".phonecode-a").removeAttr("onclick");
     var mobile = $("#mobile").val();
-    if (!mobile) {
+    if (!mobile || mobile.length!=11) {
         $("#mobile-err span").html("请填写正确的手机号！");
         $("#mobile-err").show();
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
@@ -50,9 +50,10 @@ function sendSMSCode() {
     // 构造向后端请求的参数
     var req_data = {
         image_code: imageCode, // 图片验证码的值
-        image_code_id: imageCodeId // 图片验证码的编号，（全局变量）
+        image_code_id: imageCodeId, // 图片验证码的编号，（全局变量）
+        mobile:mobile,
     };
-
+     console.log(mobile)
     // 向后端发送请求
     $.get("/api/v1.0/sms_codes/"+ mobile, req_data, function (resp) {
         // resp是后端返回的响应值，因为后端返回的是json字符串，

@@ -33,16 +33,19 @@
                                 data-target="#comment-modal">发表评价
                         </button>
                     </div>
+
+
                     {{ else if "WAIT_PAYMENT" == order.status }}
                     <div class="order-operate">
-                        <button type="button" class="order-pay">去支付</button>
+                        <!-- <button type="button" class="order-pay">去支付</button> -->
                     </div>
                     {{/if}}
+
                 </div>
                 <div class="order-content">
                     <img class="order-img" src="{{ order.img_url }}">
                     <div class="order-text">
-                        <h3>{{ order.title }}</h3>
+                        <h2>{{ order.title }}</h2>
                         <ul>
                             <li>创建时间：{{ order.ctime }}</li>
                             <li>入住日期：{{ order.start_date }}</li>

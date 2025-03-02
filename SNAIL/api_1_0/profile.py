@@ -10,10 +10,10 @@ from SNAIL import db, constants
 @api.route("/users/avatar", methods=["POST"])
 @login_required
 def set_user_avatar():
-    """设置用户的头像
-    参数： 图片(多媒体表单格式)  用户id (g.user_id)
     """
-    # 装饰器的代码中已经将user_id保存到g对象中，所以视图中可以直接读取
+    设置用户的头像
+    图片(多媒体表单格式)  用户id (g.user_id)
+    """
     user_id = g.user_id
 
     image_file = request.files.get("avatar")
@@ -47,8 +47,9 @@ def set_user_avatar():
 @api.route("/users/name", methods=["PUT"])
 @login_required
 def change_user_name():
-    """修改用户名"""
-    # 使用了login_required装饰器后，可以从g对象中获取用户user_id
+    """
+    修改用户名
+    """
     user_id = g.user_id
 
     # 获取用户想要设置的用户名
@@ -67,7 +68,7 @@ def change_user_name():
     except Exception as e:
         current_app.logger.error(e)
         db.session.rollback()
-        return jsonify(errno=RET.DBERR, errmsg="设置用户错误")
+        return jsonify(errno=RET.DBERR, errmsg="设置用户名错误")
 
     # 修改session数据中的name字段
     session["name"] = name
@@ -77,7 +78,10 @@ def change_user_name():
 @api.route("/user", methods=["GET"])
 @login_required
 def get_user_profile():
-    """获取个人信息"""
+    """
+    获取个人信息
+    """
+
     user_id = g.user_id
     # 查询数据库获取个人信息
     try:
@@ -95,7 +99,9 @@ def get_user_profile():
 @api.route("/users/auth", methods=["GET"])
 @login_required
 def get_user_auth():
-    """获取用户的实名认证信息"""
+    """
+    获取用户的实名认证信息
+    """
     user_id = g.user_id
 
     # 在数据库中查询信息
@@ -114,10 +120,11 @@ def get_user_auth():
 @api.route("/users/auth", methods=["POST"])
 @login_required
 def set_user_auth():
-    """保存实名认证信息"""
+    """
+    保存实名认证信息
+    """
     user_id = g.user_id
 
-    # 获取参数
     req_data = request.get_json()
     if not req_data:
         return jsonify(errno=RET.PARAMERR, errmsg="参数错误")
@@ -125,11 +132,11 @@ def set_user_auth():
     real_name = req_data.get("real_name")  # 真实姓名
     id_card = req_data.get("id_card")  # 身份证号
 
-    # 参数校验
+    #暂时没有对接公安接口
     if not all([real_name, id_card]):
         return jsonify(errno=RET.PARAMERR, errmsg="参数错误")
     print("log:",real_name,id_card,user_id)
-    # 保存用户的姓名与身份证号
+
     try:
         a = User.query.filter_by(id=user_id)\
             .update({"real_name": real_name, "id_card": id_card})

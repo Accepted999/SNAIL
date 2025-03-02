@@ -7,6 +7,7 @@ from SNAIL.utils.response_code import RET
 from SNAIL.models import User
 from SNAIL.libs.yuntongxun.sms import CCP
 import random
+import re
 
 from SNAIL.tasks.sms.tasks import send_sms
 
@@ -36,11 +37,14 @@ def get_sms_code(mobile):
     # 获取参数
     image_code_id = request.args.get("image_code_id")
     image_code = request.args.get("image_code")
+    mobile = request.args.get("mobile")
+    print(mobile)
 
     # 校验参数
     if not all([image_code_id, image_code]):
         # 表示参数不完整
         return jsonify(errno=RET.PARAMERR, errmsg="参数不完整")
+
 
     # 业务逻辑处理
     try:
@@ -81,10 +85,8 @@ def get_sms_code(mobile):
         if user is not None:
             return jsonify(errno=RET.DATAEXIST, errmsg="手机号已存在")
 
-    # 如果手机号不存在，则生成短信验证码
     sms_code = "%06d" % random.randint(0, 999999)
 
-    # 保存真实的短信验证码(因为调用了第三方的，防止发生异常无法检测到)
     try:
         redis_store.setex("sms_code_%s" % mobile, constants.SMS_CODE_REDIS_EXPIRES, sms_code)
         redis_store.setex("send_sms_code_%s" % mobile, constants.SEND_SMS_CODE_INTERVAL, 1)
@@ -95,7 +97,9 @@ def get_sms_code(mobile):
     # 发送短信
     try:
         ccp = CCP()
+        print(mobile)
         result = ccp.send_template_sms(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRES / 60)], 1)
+        print(result)
     except Exception as e:
         current_app.logger.error(e)
         return jsonify(errno=RET.THIRDERR, errmsg="发送异常")

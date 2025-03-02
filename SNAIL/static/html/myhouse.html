@@ -24,8 +24,8 @@
                     <div class="house-title">
                         <h3>尚未进行实名认证，无法发布房屋信息！</h3>
                     </div>
-                    <div class="myhouse-content">
-                        <a href="/auth.html" class="btn btn-success">去实名认证</a>
+                    <div class="myhouse-content" style="background: lightsteelblue">
+                        <a href="/auth.html" ><button class="button-a">去实名认证</button></a>
                     </div>
                 </li>
             </ul>
@@ -41,7 +41,7 @@
                 <li>
                     <a class="myhouse-a" href="/detail.html?id={{house.house_id}}">
                         <div class="myhouse-title">
-                            <h3>房屋ID:{{house.house_id}} —— {{house.title}}</h3>
+                            <h3>{{house.title}}</h3>
                         </div>
                         <div class="myhouse-content">
                             <img class="myhouse-img" src="{{house.img_url}}">

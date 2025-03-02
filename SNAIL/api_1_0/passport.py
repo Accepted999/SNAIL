@@ -9,9 +9,9 @@ import re
 
 @api.route("/users", methods=["POST"])
 def register():
-    """注册
-    请求的参数： 手机号、短信验证码、密码、确认密码
-    参数格式：json  返回字典
+    """
+    注册
+    手机号、短信验证码、密码、确认密码
     """
     req_dict = request.get_json()
 
@@ -51,24 +51,24 @@ def register():
     if real_sms_code != sms_code:
         return jsonify(errno=RET.DATAERR, errmsg="短信验证码错误")
 
-    # 判断用户的手机号是否注册过
-    try:
-        user = User.query.filter_by(mobile=mobile).first()
-    except Exception as e:
-        current_app.logger.error(e)
-        return jsonify(errno=RET.DBERR, errmsg="数据库异常")
-    else:
-        if user is not None:
-            return jsonify(errno=RET.DATAEXIST, errmsg="手机号已存在")
+    # 判断用户的手机号是否注册过    //短信验证码那一步就验证过了，这里可以不要
+    # try:
+    #     user = User.query.filter_by(mobile=mobile).first()
+    # except Exception as e:
+    #     current_app.logger.error(e)
+    #     return jsonify(errno=RET.DBERR, errmsg="数据库异常")
+    # else:
+    #     if user is not None:
+    #         return jsonify(errno=RET.DATAEXIST, errmsg="手机号已存在")
 
     # 保存用户的注册数据到数据库中
     user = User(name=mobile, mobile=mobile)
-    user.password = password  # 设置属性
+    user.password = password
     try:
         db.session.add(user)
-        db.session.commit()
+        db.session.commit()  #提交到数据库
     except IntegrityError as e:
-        # 数据库操作错误后的回滚   回滚到上一次操作状态
+        # 使用了commit必须回滚
         db.session.rollback()
         current_app.logger.error(e)
         return jsonify(errno=RET.DATAEXIST, errmsg="手机号已存在")
@@ -87,8 +87,9 @@ def register():
 
 @api.route("/sessions", methods=["POST"])
 def login():
-    """登录
-    参数： 手机号、密码， json
+    """
+    登录
+    手机号、密码， json
     """
     req_dict = request.get_json()
     mobile = req_dict.get("mobile")
@@ -100,7 +101,7 @@ def login():
     if not re.match(r"1[34578]\d{9}", mobile):
         return jsonify(errno=RET.PARAMERR, errmsg="手机号格式错误")
 
-    # redis记录： "access_nums_请求的ip": "次数"
+    # access_nums_请求的ip: 次数
     user_ip = request.remote_addr  # 用户的ip地址
     try:
         access_nums = redis_store.get("access_num_%s" % user_ip)
@@ -110,14 +111,13 @@ def login():
         if access_nums is not None and int(access_nums) >= constants.LOGIN_ERROR_MAX_TIMES:
             return jsonify(errno=RET.REQERR, errmsg="错误次数过多，请稍后重试")
 
-    # 从数据库中根据手机号查询用户的数据对象
     try:
         user = User.query.filter_by(mobile=mobile).first()
     except Exception as e:
         current_app.logger.error(e)
         return jsonify(errno=RET.DBERR, errmsg="获取用户信息失败")
 
-    # 用数据库的密码与用户填写的密码进行对比验证
+    #比对密码
     if user is None or not user.check_password(password):
         try:
             # redis的incr可以对字符串类型的数字数据进行加一操作，如果数据一开始不存在，则会初始化为1

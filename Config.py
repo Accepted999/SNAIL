@@ -2,8 +2,14 @@ import redis
 
 
 class Config(object):
-    """配置信息"""
-    SECRET_KEY = "XHSOI*Y9dfs9cshd9"
+    """
+        配置信息
+    """
+
+    #flask密钥字符串
+    #SECRET_KEY = "XHSOI*Y9dfs9cshd9"
+
+    SECRET_KEY = "sadkjenfwejnxkke"
     # 数据库
     SQLALCHEMY_DATABASE_URI = "mysql://root:root@127.0.0.1:3306/snail"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
@@ -12,7 +18,7 @@ class Config(object):
     REDIS_HOST = "127.0.0.1"
     REDIS_PORT = 6379
 
-    # flask-session配置,实际工作中未必是同一台机器，所以未必和上文一致
+    # flask-session配置
     SESSION_TYPE = "redis"
     SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, encoding= "utf-8")
     SESSION_USE_SIGNER = True  # 对cookie中的session_id进行隐藏处理
